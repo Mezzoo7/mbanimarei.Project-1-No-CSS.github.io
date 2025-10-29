@@ -1,0 +1,244 @@
+/* style.css
+   Single shared stylesheet for all three pages.
+   Uses one declaration to remove nav list-style.
+*/
+
+/* Import one web font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+  font-size: 16px; /* base for rem units */
+  --accent: #0b6fb3;
+  --muted: #666;
+  --card-bg: rgba(255,255,255,0.03);
+  --max-fixed-width: 800px; /* px allowed for fixed layout */
+}
+
+/* Global reset & sensible defaults */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #111;
+  line-height: 1.45;
+  background: linear-gradient(180deg, #fbfdff 0%, #f4f8fb 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove list-style from navigation on all pages with a single declaration */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Centered horizontal navigation at the top, identical on every page */
+nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0.25rem 0.5rem rgba(10,10,10,0.04);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 0.75rem 1rem;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+nav a:hover,
+nav a:focus {
+  background: var(--card-bg);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(11,111,179,0.08);
+}
+
+/* Generic page container to center content */
+.container {
+  width: min(94%, 75rem);
+  margin: 1.25rem auto;
+  padding: 1rem;
+}
+
+/* Headings */
+h1 {
+  font-size: 2rem; /* rem relative */
+  margin: 0.75rem 0 0.6rem;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 1.125rem;
+  margin: 0.7rem 0 0.4rem;
+  color: var(--muted);
+}
+
+/* Images and media responsive */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0.5rem 0 1rem;
+  border-radius: 0.35rem;
+  box-shadow: 0 0.35rem 0.6rem rgba(15,15,15,0.04);
+}
+
+/* Utility text styles */
+p {
+  font-size: 1rem;
+  margin: 0.5rem 0 0.9rem;
+}
+
+/* -------------------------
+   Page-specific styling
+   Each page has at least five different style properties below.
+   ------------------------- */
+
+/* HOME page - fluid layout (uses relative units: %, rem) */
+body.home {
+  font-size: 1rem;
+  background-image: linear-gradient(180deg, #ffffff 0%, #f6fbff 60%);
+}
+
+body.home .container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 90%;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+}
+
+body.home h1 {
+  color: var(--accent);
+  font-size: 2.25rem;
+  margin-top: 0.25rem;
+}
+
+body.home ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: 0.98rem;
+  padding-left: 0;
+}
+
+body.home img {
+  width: 22rem; /* relative-ish width using rem */
+  max-width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* RESUME page - fixed width layout (allowed px usage) */
+body.resume {
+  background: linear-gradient(180deg, #fbfbfc 0%, #f0f5fb 100%);
+  color: #0f1720;
+  font-size: 0.98rem;
+}
+
+body.resume .container {
+  width: var(--max-fixed-width); /* fixed px width */
+  margin: 1.5rem auto;
+  padding: 1.25rem;
+  background: white;
+  border-radius: 0.6rem;
+  box-shadow: 0 0.5rem 1rem rgba(12,12,12,0.06);
+}
+
+body.resume h1 {
+  font-size: 1.6rem;
+  color: #0b4f78;
+  margin-bottom: 0.25rem;
+}
+
+body.resume p, body.resume ul {
+  font-size: 0.95rem;
+  color: #17202a;
+  margin-bottom: 0.6rem;
+}
+
+body.resume img {
+  width: 18rem;
+  float: right;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* HOBBY page - slightly different theme, still fluid */
+body.hobby {
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+  font-size: 1rem;
+}
+
+body.hobby .container {
+  max-width: 72%;
+  margin: 1.25rem auto;
+  padding: 1rem;
+  border-left: 0.4rem solid var(--accent);
+  border-radius: 0.35rem;
+  background: rgba(255,255,255,0.9);
+}
+
+body.hobby h1 {
+  color: #0a4f7a;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+body.hobby p {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+body.hobby video {
+  width: 28rem;
+  max-width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* small-screen tweaks - indent rules inside media query */
+@media (max-width: 680px) {
+  nav ul {
+    gap: 0.5rem;
+    padding: 0.6rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  body.resume .container {
+    width: 94%;
+    box-shadow: none;
+    padding: 0.9rem;
+  }
+
+  body.hobby .container {
+    width: 92%;
+    padding: 0.9rem;
+  }
+}
+
+/* Accessibility focus outlines */
+a:focus {
+  outline: 3px solid rgba(11,111,179,0.12);
+  outline-offset: 2px;
+}
