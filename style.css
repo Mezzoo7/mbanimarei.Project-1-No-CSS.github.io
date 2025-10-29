@@ -177,10 +177,11 @@ body.resume p, body.resume ul {
 
 body.resume img {
   width: 18rem;
-  float: right;
-  margin-left: 1rem;
-  margin-bottom: 0.5rem;
+  display: block;
+  margin: 0.75rem auto;
+  float: none;
 }
+
 
 /* HOBBY page - slightly different theme, still fluid */
 body.hobby {
